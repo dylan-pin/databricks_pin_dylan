@@ -4,7 +4,7 @@ from tqdm import tqdm
 from datetime import datetime
 
 liens = pd.read_csv('./url/csv_url.csv', sep=',', encoding='utf-8')
-liens = liens.iloc[1:10]  # garde les lignes 1 à 9
+# liens = liens.iloc[1:10]  # garde les lignes 1 à 9
 
 def check_link(url):
     try:
