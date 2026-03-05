@@ -1,0 +1,5 @@
+GIT_REPO_URL = "https://github.com/dylan-pin/databricks_pin_dylan"
+GIT_BRANCH = "main"
+SRC_FOLDER = "src"
+TASK_FOLDER = "jobs/daily_push"
+URL_FOLDER = "url"

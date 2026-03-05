@@ -1,9 +1,14 @@
 import json
 import csv
 import re
+from src.config import *
+from pathlib import Path
 
-input_file = "./url/url.json"
-output_file = "./url/csv_url.csv"
+input_file = ".." / Path(URL_FOLDER) / "url.json"
+# print(input_file)
+
+output_file = ".." / Path(URL_FOLDER) / "csv_url.csv"
+# print(output_file)
 
 # Capture le texte entre \x1b[49m et le prochain \x1b
 pattern = re.compile(r"\x1b\[49m(.*?)\x1b", re.DOTALL)

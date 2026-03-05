@@ -2,8 +2,17 @@ import pandas as pd
 import requests
 from tqdm import tqdm
 from datetime import datetime
+from src.config import *
+from pathlib import Path
 
-liens = pd.read_csv('./url/csv_url.csv', sep=',', encoding='utf-8')
+input_file = ".." / Path("url") / "csv_url.csv"
+# print(input_file)
+
+output_path = ".." / Path("url")
+# print(output_path)
+
+liens = pd.read_csv(input_file, sep=',', encoding='utf-8')
+# print(liens.head())
 # liens = liens.iloc[1:10]  # garde les lignes 1 à 9
 
 def check_link(url):
@@ -25,6 +34,6 @@ with tqdm(total=len(liens), desc="Vérification des liens", unit=" lien") as pba
         pbar.update(1)
 
 df_results = pd.DataFrame(results, columns=["url", "statut", "datetime"])
-df_results.to_csv(f'./url/{datetime.now().strftime("%Y-%m-%d %H:%M:%S")}.csv', index=False, encoding='utf-8')
+df_results.to_csv(f'{output_path}/{datetime.now().strftime("%Y-%m-%d %H:%M:%S")}.csv', index=False, encoding='utf-8')
 
 print(df_results)

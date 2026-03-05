@@ -11,7 +11,6 @@ import webdriver_manager.chrome
 from webdriver_manager.chrome import ChromeDriverManager
 from selenium.webdriver.chrome.options import Options
 
-
 edge_options = Options()
 edge_options.add_argument("--headless")  # Lancer Edge sans interface graphique
 edge_options.add_argument("--disable-gpu")  # Désactiver l'accélération GPU pour éviter les erreurs
@@ -21,8 +20,6 @@ chrome_options = Options()
 chrome_options.add_argument("--headless")  # Lancer Chrome sans interface graphique
 chrome_options.add_argument("--disable-gpu")  # Désactiver l'accélération GPU pour éviter les erreurs
 chrome_options.add_argument("--no-sandbox")
-
-
 
 # data = {
 #     'nom_commercial': [],
@@ -36,6 +33,7 @@ chrome_options.add_argument("--no-sandbox")
 #     'efficacite': [],
 #     'effets_secondaires': []
 # }
+
 data = {
     'date' : [],
     'sexe' : [],
@@ -47,8 +45,8 @@ data = {
     'avis' : [],
     'url'  : []
     }
-# # Initialiser les listes pour stocker les données
 
+# Initialiser les listes pour stocker les données
 date = []
 sexe = []
 age = []
@@ -59,8 +57,7 @@ effets_secondaires = []
 avis = []
 url_in = []
 
-
-# import the urls
+# import urls
 urls_brute = pd.read_csv('./url/functional_links.csv', sep=',')
 urls = urls_brute['liens_urls']
 urls = urls[8001::]
@@ -70,7 +67,6 @@ with tqdm(total=len(urls), desc="Vérification des liens", unit=" lien") as pbar
     
     for url in urls:
     # def get_soup(url):
-        
         
         driver = webdriver.Chrome(options=chrome_options)
         # driver = webdriver.Edge(options=edge_options)
@@ -140,6 +136,6 @@ with tqdm(total=len(urls), desc="Vérification des liens", unit=" lien") as pbar
                 data['url'].append(url_in)
        
 # Création du DataFrame
-# df = pd.DataFrame(data)
-# df.to_csv('resultats_9000.csv', index=False, encoding='utf-8', sep=',')
+df = pd.DataFrame(data)
+df.to_csv('resultats_9000.csv', index=False, encoding='utf-8', sep=',')
 
